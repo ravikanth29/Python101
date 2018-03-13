@@ -15,7 +15,7 @@ def choose_first():
 
 
 def space_check(board, position):
-    if board[position] == '':
+    if board[position] is None:
         return True
     else:
         return False
@@ -31,14 +31,13 @@ def full_board_check(board):
 
 def player_choice(board):
 
-    user_position = 1
+    user_position = 0
 
-    while user_position in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
-        user_position = int(raw_input("Please choose your position [1-9]"))
-        if space_check(board, user_position):
-            print "Position chosen is ", user_position
-            print type(user_position)
-            return user_position
+    while not (user_position in [1, 2, 3, 4, 5, 6, 7, 8, 9] or space_check(board, user_position)):
+        user_position = int(raw_input('Please choose your position'))
+        print "Position chosen is ", user_position
+        print type(user_position)
+        return user_position
 
 
 def play_again():
